@@ -22,12 +22,35 @@ JOBS = [
         "salary": "2000$"
     }
 ]
+
+Prices = [
+    {
+        "id":4,
+        "name": "Vip User",
+        "Price": "10$",
+    },
+    {
+        "id":5,
+        "name": "Premium User",
+        "Price": "20$",
+    },
+    {
+        "id":6,
+        "name": "Ultra User",
+        "Price": "30$",
+    }
+]
+
 @app.route('/')
 def hello_world():
     return render_template('home.html', jobs=JOBS)
 @app.route('/api/jobs')
 def list_jobs():
     return jsonify(JOBS)
+@app.route("/market")
+def market_page():
+    return render_template('market.html', prices=Prices)
+
 
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', debug = True)
